@@ -6,7 +6,7 @@ const color = document.getElementById('colorPicker').value;
 
 
 
-//create a table  with inputHeight and inputWidth using nested for loop
+//by clicking submit button, after resetGrid(), create a table with inputHeight and inputWidth using nested for loop
 function makeGrid() {
     const table = document.getElementById('pixelCanvas');
     const height = document.getElementById('inputHeight').value;
@@ -23,9 +23,21 @@ function makeGrid() {
         }
     }
 }
-// When size is submitted by the user, call makeGrid()
+
+//by clicking submit button, remove all the table rows
+function resetGrid() {
+    const table = document.getElementById('pixelCanvas');
+    let firstRow = table.firstElementChild;
+    while (firstRow) {
+        firstRow.remove();
+        firstRow = table.firstElementChild;
+    }
+ }
+
+// When inputHeight and inputWidth are submitted by the user, call resetGrid() then makeGrid()
 document.addEventListener('submit', function (event) {
     event.preventDefault();
+    resetGrid();
     makeGrid();
 });
-// TODO:
+//
